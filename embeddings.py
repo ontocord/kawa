@@ -723,10 +723,12 @@ def trie_apply_prefix_suffix_compression(fsmdict, word, lenW, chPrefix=chr(30), 
 def remove_duplicates(lst):
     return list(OrderedDict.fromkeys(lst))
 
-@jit(nopython=True, cache=True, nogil=True)
+#rewrite to use pytorch
+#@jit(nopython=True, cache=True, nogil=True)
 def np_cosine(v1, v2):  return np_dot(v1, v2) / (np_norm(v1) * np_norm(v2))
 
-@jit(nopython=True, cache=True, nogil=True)
+#rewrite to use pytorch
+#@jit(nopython=True, cache=True, nogil=True)
 def norm_matrix(a):
     a_norm = np.zeros(shape=(a.shape[0],), dtype=np.float32)
     for i in range(a.shape[0]):
@@ -735,7 +737,8 @@ def norm_matrix(a):
             a_norm[i] = 0.00001
     return a_norm
 
-@jit(nopython=True, cache=True, nogil=True)
+#rewrite to use pytorch
+#@jit(nopython=True, cache=True, nogil=True)
 def cosine_search(a, b, a_norm=None, b_norm=None, k=5):
     """
     given a and b, find the k highest cosine matches
@@ -784,6 +787,7 @@ class DummyLock:
     def __exit__(self, exc_type, exc_val, exc_tb):
         pass
 
+# This is an alternate to using Annoy. TODO: create interface to Annoy for search results.
 # TODO - shard out the search results
 class OntoSearchResults:
     """
