@@ -4,7 +4,6 @@ Kawa (川) pronounced ka-va means river in Japanese and is a multilingual lexico
 # License
 
 - The source code authored by Ontocord LLC and contributed by contributors of this project is licensed under Apache 2.0.
-- The TurkuNLP sample data is based on OSCAR and mc4. See the information uder turkunlp_data for more details.
 - The ontology data is derived from Conceptnet, Yago, wordnet, and Wikiann and is mostly licensed under a CC license.
 
 ## Yago
