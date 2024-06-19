@@ -63,9 +63,9 @@ try:
 except:
   sys.path.append(os.path.abspath(os.path.join("./",
                                            os.path.pardir)))
-import default_onto_tags
-from stopwords import stopwords
-from cjk import *
+from ontology.default_onto_tags import default_label2label, default_upper_ontology
+from ontology.stopwords import all_stopwords
+from ontology.cjk import *
 mt5_underscore = "▁"
 trannum = str.maketrans("0123456789", "1111111111")
 
@@ -83,7 +83,7 @@ class OntologyManager:
   """
 
     default_strip_chars = "-,~`.?!@#$%^&*(){}[]|\\/-_+=<>;'\" ,،、“”《》«»!:;?。…．"
-    stopwords_all= set(itertools.chain(*[list(s) for s in stopwords.values()]))
+    stopwords_all= set(itertools.chain(*[list(s) for s in all_stopwords.values()]))
     base_onto_name = "yago_cn_wn"
     default_data_dir = os.path.abspath(os.path.join(onto_dir, "data"))
 
@@ -108,7 +108,7 @@ class OntologyManager:
         self.tag_type = tag_type
         self.target_lang_lexicon = {}
         self.target_lang = target_lang
-        self.stopwords = set(stopwords.get(target_lang, [])) if target_lang else OntologyManager.stopwords_all
+        self.stopwords = set(all_stopwords.get(target_lang, [])) if target_lang else OntologyManager.stopwords_all
         if data_dir is None: data_dir = OntologyManager.default_data_dir
         if tmp_dir is None: tmp_dir = "/tmp/ontology/"
         os.system(f"mkdir -p {data_dir}")
@@ -122,10 +122,10 @@ class OntologyManager:
         self.connector = connector
         self.compound_word_step = compound_word_step
         if label2label is None:
-            label2label = default_onto_tags.default_label2label
+            label2label = default_label2label
         self.label2label = label2label
         if upper_ontology is None:
-            upper_ontology = default_onto_tags.default_upper_ontology
+            upper_ontology = default_upper_ontology
         self.target_lang_dat = None
         if OntologyManager.upper_ontology is None:
           OntologyManager.load_upper_ontology(upper_ontology)
