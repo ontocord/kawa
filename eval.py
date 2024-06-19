@@ -30,7 +30,7 @@ ontology_langs = ['ace', 'af', 'als', 'am', 'an', 'ang', 'ar', 'arc', 'arz', 'as
 relevant_tags = ["PER"]
 
 # number of test cases to run per lang. set None to iterate through all available
-num_instances = 10000
+num_instances = 100
 results = dict()
 
 ontology_langs = [
