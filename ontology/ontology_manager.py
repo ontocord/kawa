@@ -98,7 +98,7 @@ class OntologyManager:
                  upper_ontology=None, ontology_file="ontology.json.gz",
                  target_lang_data_file=None, word2ner_file=None, \
                  connector="_", label2label=None,  \
-                tag_type={'PERSON', 'PUBLIC_FIGURE', }, ontology=None):
+                tag_type=None, ontology=None):
         """
          OntologyManager manages an ontology or dictionary of words, and tags and tokenizes a sentences based on the dictionary.
         """
